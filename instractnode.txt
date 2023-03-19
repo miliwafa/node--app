@@ -1,0 +1,19 @@
+FROM node
+WORKDIR /app
+COPY . /app
+RUN npm install
+EXPOSE 3000
+CMD [ "node","server.js" ]
+
+
+$docker build -t nodeapp .
+$docker run -p 3005:3000 nodeapp
+$docker stop 95b196895f60b5a47756a4e3e56cae1dd8353f60c1f5102dcb3bc27d319bed15
+$docker run -p 3004:3000 --name C-npdeapp nodeapp
+$docker stop C-npdeapp
+$docker start -a C-npdeapp
+$docker container prune
+$ docker image prune
+$ docker build -t nodeapp1 .
+$ docker run -p 3002:3000 --rm --name C--node nodeapp1
+$ docker stop C--node
